@@ -25,13 +25,6 @@ export default async function Dashboard() {
           <p className="text-xl font-semibold">{user.name}</p>
           <p className="text-gray-600">{user.email}</p>
         </div>
-
-        <div className="mt-4">
-          <h3 className="font-semibold mb-2">Full User Data:</h3>
-          <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
-            {JSON.stringify(user, null, 2)}
-          </pre>
-        </div>
       </div>
 
       <a

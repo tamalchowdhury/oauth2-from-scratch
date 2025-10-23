@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
-import {
-  exchangeCodeForToken,
-  getUserInfo,
-  getUserInfoFromToken,
-} from "@/lib/oauth"
+import { exchangeCodeForToken, getUserInfoFromToken } from "@/lib/oauth"
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
