@@ -1,8 +1,9 @@
 import crypto from "crypto"
+import * as jose from "jose"
 
 const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token"
-const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v2/userinfo"
+const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
 
 export function generateState(): string {
   return crypto.randomBytes(32).toString("hex")
@@ -50,7 +51,7 @@ export async function getUserInfo(accessToken: string) {
   try {
     const response = await fetch(GOOGLE_USERINFO_URL, {
       headers: {
-        Authorization: `Bearer: ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     })
 
@@ -60,5 +61,17 @@ export async function getUserInfo(accessToken: string) {
   } catch (error) {
     console.error("Failed to get user info:", error.message)
     throw error
+  }
+}
+
+export async function getUserInfoFromToken(idToken: string) {
+  const payload = jose.decodeJwt(idToken)
+  const { sub, email, name, picture } = payload
+
+  return {
+    sub,
+    email,
+    name,
+    picture,
   }
 }
