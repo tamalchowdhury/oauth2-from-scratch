@@ -3,7 +3,7 @@
 Learning OAuth2 by implementing the Authorization Code flow manually (no auth libraries).
 
 ## What This Does
-- Implements "Sign in with Google" from scratch
+- Implements "Sign in with Google and Github" from scratch
 - Manually handles authorization URL generation
 - Exchanges authorization code for tokens
 - Fetches user info using access token
