@@ -21,6 +21,13 @@ export default async function Home() {
       >
         Sign in with Google
       </a>
+
+      <a
+        href="/api/auth/github/login"
+        className="bg-black hover:bg-black-600 mt-4 text-white font-bold py-3 px-6 rounded"
+      >
+        Sign in with Github
+      </a>
     </main>
   )
 }
